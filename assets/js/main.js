@@ -96,9 +96,9 @@ function updateBook(bookId) {
 
   document.dispatchEvent(new Event(RENDER_EVENT))
   saveData()
-  alert(`BUKU "${textTitle}" BERHASIL DIUPDATE!`)
   const editSection = document.querySelector('.edit_section')
   editSection.classList.remove('show')
+  alert(`BUKU "${bookTarget.title}" BERHASIL DI UPDATE!`)
   getBooksInformation()
 }
 
@@ -138,30 +138,13 @@ function undoBookFromCompleted(bookId) {
 function searchBooks() {
   const title = document.getElementById('searchBookTitle').value
 
-  const serializedData = localStorage.getItem(STORAGE_KEY)
-  const data = JSON.parse(serializedData)
-  const searchedBooks = data.filter(function (book) {
-    return (
-      book.title.toLowerCase().includes(title) || book.title.includes(title)
-    )
+  const searchedBook = books.filter(function (book) {
+    const bookName = book.title.toLowerCase()
+
+    return bookName.includes(title.toLowerCase())
   })
 
-  if (searchedBooks.length === 0) {
-    alert('Buku tidak ditemukan!')
-    return location.reload()
-  }
-
-  if (title !== '') {
-    books = []
-    for (const book of searchedBooks) {
-      books.push(book)
-    }
-
-    document.dispatchEvent(new Event(RENDER_EVENT))
-  } else {
-    books = []
-    loadDataFromStorage()
-  }
+  return searchedBook
 }
 
 function loadDataFromStorage() {
@@ -235,8 +218,8 @@ function makeBook(bookObject) {
     isComplete.checked = bookItem.isCompleted
 
     updateForm.addEventListener('submit', function (e) {
-      updateBook(bookId)
       e.preventDefault()
+      updateBook(bookId)
     })
   })
 
@@ -316,6 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
   searchSubmit.addEventListener('submit', function (e) {
     e.preventDefault()
     searchBooks()
+    document.dispatchEvent(new Event(RENDER_EVENT))
   })
 
   completeCheckbox.addEventListener('change', function () {
@@ -339,7 +323,7 @@ document.addEventListener(RENDER_EVENT, function () {
   const completedBookList = document.getElementById('completeBookshelfList')
   completedBookList.innerText = ''
 
-  for (const bookItem of books) {
+  for (const bookItem of searchBooks()) {
     const bookElement = makeBook(bookItem)
     if (!bookItem.isCompleted) uncompletedBookList.append(bookElement)
     else completedBookList.append(bookElement)
