@@ -1,165 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Bookshelf Apps</title>
-    <link
-      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="assets/css/style.css" />
-  </head>
-  <body>
-    <header class="head_bar">
-      <h1 class="head_bar__title">Bookshelf Apps</h1>
-    </header>
-    <main>
-      <div class="information_section shadow">
-        <h2>Informasi Rak Buku</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Bookshelf Apps</title>
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <script
+            src="https://kit.fontawesome.com/29057e6c17.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </head>
+    <body>
+        <header class="head_bar">
+            <h1 class="head_bar__title">Bookshelf Apps</h1>
+        </header>
+        <main>
+            <div class="information_section shadow">
+                <h2>Informasi Rak Buku</h2>
 
-        <div class="information-wrap">
-          <div class="information-item bg-primary text-white">
-            <span>Jumlah Buku</span>
-            <span id="totalBookCount">0</span>
-          </div>
+                <div class="information-wrap">
+                    <div class="information-item bg-primary text-white">
+                        <span>Jumlah Buku</span>
+                        <span id="totalBookCount">0</span>
+                    </div>
 
-          <div class="information-item bg-primary text-white">
-            <span>Belum Selesai</span>
-            <span id="totalNotCompleteCount">0</span>
-          </div>
+                    <div class="information-item bg-primary text-white">
+                        <span>Belum Selesai</span>
+                        <span id="totalNotCompleteCount">0</span>
+                    </div>
 
-          <div class="information-item bg-primary text-white">
-            <span>Selesai Dibaca</span>
-            <span id="totalCompleteCount">0</span>
-          </div>
-        </div>
-      </div>
-
-      <section class="search_section shadow">
-        <h2>Cari Buku</h2>
-        <form id="searchBook">
-          <label for="searchBookTitle"><i class="bx bx-search"></i></label>
-          <input
-            id="searchBookTitle"
-            type="text"
-            autocomplete="off"
-            placeholder="Cari Berdasarkan Judul Buku"
-          />
-          <button id="searchSubmit" type="submit">Cari</button>
-          <button id="addBookBtn" type="button">Tambah Buku</button>
-        </form>
-      </section>
-
-      <section class="input_section shadow">
-        <h2>Masukkan Buku Baru</h2>
-        <form id="inputBook">
-          <div class="input">
-            <label for="inputBookTitle">Judul</label>
-            <input
-              id="inputBookTitle"
-              type="text"
-              autocomplete="off"
-              required
-            />
-          </div>
-          <div class="input">
-            <label for="inputBookAuthor">Penulis</label>
-            <input
-              id="inputBookAuthor"
-              type="text"
-              autocomplete="off"
-              required
-            />
-          </div>
-          <div class="input">
-            <label for="inputBookYear">Tahun</label>
-            <input
-              id="inputBookYear"
-              type="number"
-              minlength="4"
-              maxlength="4"
-              required
-            />
-          </div>
-          <div class="input_inline">
-            <div>
-              <label for="inputBookIsComplete">Selesai dibaca</label>
-              <input id="inputBookIsComplete" type="checkbox" />
+                    <div class="information-item bg-primary text-white">
+                        <span>Selesai Dibaca</span>
+                        <span id="totalCompleteCount">0</span>
+                    </div>
+                </div>
             </div>
-            <div>
-              <button id="cancelAddBook">Batal</button>
-            </div>
-          </div>
-          <button id="inputBook" type="submit">
-            Masukkan Buku ke rak <span>Belum selesai dibaca</span>
-          </button>
-        </form>
-      </section>
 
-      <section class="book_shelf_section">
-        <section class="book_shelf shadow">
-          <h2>Belum selesai dibaca</h2>
+            <section class="search_section shadow">
+                <h2>Cari Buku</h2>
+                <form id="searchBook">
+                    <label for="searchBookTitle"
+                        ><i class="fa-solid fa-magnifying-glass"></i
+                    ></label>
+                    <input
+                        id="searchBookTitle"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Cari Berdasarkan Judul Buku"
+                    />
 
-          <div id="incompleteBookshelfList" class="book_list"></div>
-        </section>
+                    <button id="searchSubmit" type="submit">Cari</button>
+                    <button id="addBookBtn" type="button">Tambah Buku</button>
+                </form>
+            </section>
 
-        <section class="book_shelf shadow">
-          <h2>Selesai dibaca</h2>
+            <section class="input_section shadow">
+                <h2>Masukkan Buku Baru</h2>
+                <form id="inputBook">
+                    <div class="input">
+                        <label for="inputBookTitle">Judul</label>
+                        <input
+                            id="inputBookTitle"
+                            type="text"
+                            autocomplete="off"
+                            required
+                        />
+                    </div>
+                    <div class="input">
+                        <label for="inputBookAuthor">Penulis</label>
+                        <input
+                            id="inputBookAuthor"
+                            type="text"
+                            autocomplete="off"
+                            required
+                        />
+                    </div>
+                    <div class="input">
+                        <label for="inputBookYear">Tahun</label>
+                        <input
+                            id="inputBookYear"
+                            type="number"
+                            minlength="4"
+                            maxlength="4"
+                            required
+                        />
+                    </div>
+                    <div class="input_inline">
+                        <div>
+                            <label for="inputBookIsComplete"
+                                >Selesai dibaca</label
+                            >
+                            <input id="inputBookIsComplete" type="checkbox" />
+                        </div>
+                        <div>
+                            <button id="cancelAddBook">Batal</button>
+                        </div>
+                    </div>
+                    <button id="inputBook" type="submit">
+                        Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+                    </button>
+                </form>
+            </section>
 
-          <div id="completeBookshelfList" class="book_list"></div>
-        </section>
-      </section>
+            <section class="book_shelf_section">
+                <section class="book_shelf shadow">
+                    <h2>Belum selesai dibaca</h2>
 
-      <section class="edit_section input_section shadow">
-        <h2>Update Buku</h2>
-        <form id="updateBook">
-          <div class="input">
-            <label for="updateBookTitle">Judul</label>
-            <input
-              id="updateBookTitle"
-              type="text"
-              autocomplete="off"
-              required
-            />
-          </div>
-          <div class="input">
-            <label for="updateBookAuthor">Penulis</label>
-            <input
-              id="updateBookAuthor"
-              type="text"
-              autocomplete="off"
-              required
-            />
-          </div>
-          <div class="input">
-            <label for="updateBookYear">Tahun</label>
-            <input
-              id="updateBookYear"
-              type="number"
-              minlength="4"
-              maxlength="4"
-              required
-            />
-          </div>
-          <div class="input_inline">
-            <div>
-              <label for="updateBookIsComplete">Selesai dibaca</label>
-              <input id="updateBookIsComplete" type="checkbox" />
-            </div>
-            <div>
-              <button id="cancelEdit">Batal</button>
-            </div>
-          </div>
-          <button id="bookSubmit" type="submit">Update Buku</button>
-        </form>
-      </section>
-    </main>
+                    <div id="incompleteBookshelfList" class="book_list"></div>
+                </section>
 
-    <script src="assets/js/main.js"></script>
-  </body>
+                <section class="book_shelf shadow">
+                    <h2>Selesai dibaca</h2>
+
+                    <div id="completeBookshelfList" class="book_list"></div>
+                </section>
+            </section>
+
+            <section class="edit_section input_section shadow">
+                <h2>Update Buku</h2>
+                <form id="updateBook">
+                    <div class="input">
+                        <label for="updateBookTitle">Judul</label>
+                        <input
+                            id="updateBookTitle"
+                            type="text"
+                            autocomplete="off"
+                            required
+                        />
+                    </div>
+                    <div class="input">
+                        <label for="updateBookAuthor">Penulis</label>
+                        <input
+                            id="updateBookAuthor"
+                            type="text"
+                            autocomplete="off"
+                            required
+                        />
+                    </div>
+                    <div class="input">
+                        <label for="updateBookYear">Tahun</label>
+                        <input
+                            id="updateBookYear"
+                            type="number"
+                            minlength="4"
+                            maxlength="4"
+                            required
+                        />
+                    </div>
+                    <div class="input_inline">
+                        <div>
+                            <label for="updateBookIsComplete"
+                                >Selesai dibaca</label
+                            >
+                            <input id="updateBookIsComplete" type="checkbox" />
+                        </div>
+                        <div>
+                            <button id="cancelEdit">Batal</button>
+                        </div>
+                    </div>
+                    <button id="bookSubmit" type="submit">Update Buku</button>
+                </form>
+            </section>
+        </main>
+
+        <script src="assets/js/main.js"></script>
+    </body>
 </html>
