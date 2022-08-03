@@ -5,7 +5,7 @@ const STORAGE_KEY = 'BOOK_APPS'
 
 function isStorageExist() {
   if (typeof Storage === undefined) {
-    alert('Browser kamu tidak mendukung local storage')
+    alert('BROWSER KAMU TIDAK MENDUKUNG LOCAL STORAGE!')
     return false
   }
 
@@ -109,17 +109,20 @@ function addBookToCompleted(bookId) {
   bookTarget.isCompleted = true
   document.dispatchEvent(new Event(RENDER_EVENT))
   saveData()
+  alert(`BUKU "${bookTarget.title}" BERHASIL DIPINDAHKAN!`)
   getBooksInformation()
 }
 
 function removeBookFromCompleted(bookId) {
   const bookTarget = findBookIndex(bookId)
+  const bookTitle = findBook(bookId)
 
   if (bookTarget === -1) return
 
   books.splice(bookTarget, 1)
   document.dispatchEvent(new Event(RENDER_EVENT))
   saveData()
+  alert(`BUKU "${bookTitle.title}" BERHASIL DIHAPUS!`)
   getBooksInformation()
 }
 
@@ -132,6 +135,7 @@ function undoBookFromCompleted(bookId) {
   document.dispatchEvent(new Event(RENDER_EVENT))
 
   saveData()
+  alert(`BUKU "${bookTarget.title}" BERHASIL DIPINDAHKAN!`)
   getBooksInformation()
 }
 
@@ -180,7 +184,7 @@ function makeBook(bookObject) {
   undoButton.classList.add('green')
 
   if (bookObject.isCompleted) {
-    undoButton.innerText = 'Belum selesai dibaca'
+    undoButton.innerText = 'Belum Selesai Dibaca'
     undoButton.addEventListener('click', function () {
       undoBookFromCompleted(bookObject.id)
     })
@@ -197,10 +201,8 @@ function makeBook(bookObject) {
   updateButton.classList.add('gold')
   updateButton.innerText = 'Update buku'
   updateButton.addEventListener('click', function () {
-    const inputSection = document.querySelector('.input_section')
-    inputSection.classList.remove('show')
-    const editSection = document.querySelector('.edit_section')
-    editSection.classList.add('show')
+    document.querySelector('.input_section').classList.remove('show')
+    document.querySelector('.edit_section').classList.add('show')
 
     const bookId = bookObject.id
 
@@ -247,18 +249,14 @@ function makeBook(bookObject) {
 
 const cancelAddBook = document.querySelector('#cancelAddBook')
 cancelAddBook.addEventListener('click', () => {
-  const inputSection = document.querySelector('.input_section')
-  inputSection.classList.remove('show')
+  document.querySelector('.input_section').classList.remove('show')
 })
 
 const cancelEdit = document.querySelector('#cancelEdit')
 cancelEdit.addEventListener('click', (e) => {
-  const editSection = document.querySelector('.edit_section')
-  editSection.classList.remove('show')
+  document.querySelector('.edit_section').classList.remove('show')
   e.preventDefault()
 })
-
-console.log(books)
 
 function getBooksInformation() {
   let completed = (notCompleted = 0)
