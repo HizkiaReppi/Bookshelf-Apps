@@ -12,9 +12,9 @@ Materi yang dipelajari dikelas ini:
 
 ## Submission
 
-Pada submission kelas ini, saya membuat website Bookshelf Apps sederhana dengan menggunakan template UI yang disediakan oleh Dicoding, dan saya mengubah sedikit UI tersebut serta menambahkan beberapa fitur yang bisa membuat website memiliki fungsionalitas serta yang bisa memanfaatkan web storage untuk menyimpan buku atau data yang dimasukan
+Pada submission kelas ini, saya membuat website Bookshelf Apps sederhana dengan menggunakan template UI yang disediakan oleh Dicoding, dan saya menambahkan beberapa fitur seperti cari buku, update buku yang bisa membuat website memiliki fungsionalitas serta yang bisa memanfaatkan web storage untuk menyimpan buku atau data yang dimasukan.
 
 ![img](assets/img/Website.PNG)
-<a href="https://mybookshelf-apps.netlify.app/" style="text-align: center">Demo</a>
+<a href="https://mybookshelf-apps.netlify.app/" target="_blank">Demo</a>
 
 Create with ❤ | Hizkia Reppi
