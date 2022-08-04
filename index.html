@@ -8,7 +8,8 @@
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Bookshelf Apps</title>
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
+        <link rel="stylesheet" href="assets/css/main.css" />
         <script
             src="https://kit.fontawesome.com/29057e6c17.js"
             crossorigin="anonymous"
@@ -16,154 +17,272 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>
-        <header class="head_bar">
+        <header
+            class="head_bar flex items-center justify-center bg-sky-500 p-5 text-4xl font-bold text-white"
+        >
             <h1 class="head_bar__title">Bookshelf Apps</h1>
         </header>
-        <main>
-            <div class="information_section shadow">
-                <h2>Informasi Rak Buku</h2>
+        <main class="px-4 pt-0 pb-4 font-sans">
+            <div
+                class="information_section m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md"
+            >
+                <h2 class="text-3xl font-bold text-sky-500">
+                    Informasi Rak Buku
+                </h2>
 
-                <div class="information-wrap">
-                    <div class="information-item bg-primary text-white">
-                        <span>Jumlah Buku</span>
+                <div
+                    class="information-wrap m-auto mt-3 flex w-full flex-row content-around justify-center gap-56"
+                >
+                    <div
+                        class="information-item my-auto mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-5 text-white shadow-2xl"
+                    >
+                        <span class="pt-2">Jumlah Buku</span>
                         <span id="totalBookCount">0</span>
                     </div>
 
-                    <div class="information-item bg-primary text-white">
-                        <span>Belum Selesai</span>
+                    <div
+                        class="information-item my-auto mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-5 text-white shadow-2xl"
+                    >
+                        <span class="pt-2">Belum Selesai</span>
                         <span id="totalNotCompleteCount">0</span>
                     </div>
 
-                    <div class="information-item bg-primary text-white">
-                        <span>Selesai Dibaca</span>
+                    <div
+                        class="information-item my-auto mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-5 text-white shadow-md"
+                    >
+                        <span class="pt-2">Selesai Dibaca</span>
                         <span id="totalCompleteCount">0</span>
                     </div>
                 </div>
             </div>
 
-            <section class="search_section shadow">
-                <h2>Cari Buku</h2>
-                <form id="searchBook">
-                    <label for="searchBookTitle"
+            <section
+                class="search_section m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md"
+            >
+                <h2 class="text-3xl font-bold text-sky-500">Cari Buku</h2>
+                <form
+                    id="searchBook"
+                    class="flex w-full justify-around gap-5 p-5"
+                >
+                    <label
+                        for="searchBookTitle"
+                        class="flex items-center text-2xl"
                         ><i class="fa-solid fa-magnifying-glass"></i
                     ></label>
                     <input
                         id="searchBookTitle"
+                        class="w-full rounded-lg border-2 border-l-slate-900 border-t-slate-900 border-r-slate-700 border-b-slate-600 p-3"
                         type="text"
                         autocomplete="off"
                         placeholder="Cari Berdasarkan Judul Buku"
                     />
 
-                    <button id="searchSubmit" type="submit">Cari</button>
-                    <button id="addBookBtn" type="button">Tambah Buku</button>
+                    <button
+                        id="searchSubmit"
+                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out"
+                        type="submit"
+                    >
+                        Cari
+                    </button>
+                    <button
+                        id="addBookBtn"
+                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out"
+                        type="button"
+                    >
+                        Tambah Buku
+                    </button>
                 </form>
             </section>
 
-            <section class="input_section shadow">
-                <h2>Masukkan Buku Baru</h2>
+            <section
+                class="input_section mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md transition duration-500 ease-in-out"
+            >
+                <h2 class="text-center text-3xl font-bold text-sky-500">
+                    Masukkan Buku Baru
+                </h2>
                 <form id="inputBook">
-                    <div class="input">
-                        <label for="inputBookTitle">Judul</label>
+                    <div class="mx-0 my-2">
+                        <label
+                            for="inputBookTitle"
+                            class="font-bold text-sky-500"
+                            >Judul Buku</label
+                        >
                         <input
                             id="inputBookTitle"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
                             type="text"
+                            placeholder="Masukan Judul Buku"
                             autocomplete="off"
                             required
                         />
                     </div>
-                    <div class="input">
-                        <label for="inputBookAuthor">Penulis</label>
+                    <div class="mx-0 my-2">
+                        <label
+                            for="inputBookAuthor"
+                            class="font-bold text-sky-500"
+                            >Nama Penulis</label
+                        >
                         <input
                             id="inputBookAuthor"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
                             type="text"
+                            placeholder="Masukan Nama Penulis Buku"
                             autocomplete="off"
                             required
                         />
                     </div>
-                    <div class="input">
-                        <label for="inputBookYear">Tahun</label>
+                    <div class="input mx-0 my-2">
+                        <label
+                            for="inputBookYear"
+                            class="font-bold text-sky-500"
+                            >Tahun Terbit</label
+                        >
                         <input
                             id="inputBookYear"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
                             type="number"
+                            placeholder="Masukan Tahun Terbit Buku"
                             minlength="4"
                             maxlength="4"
                             required
                         />
                     </div>
-                    <div class="input_inline">
-                        <div>
-                            <label for="inputBookIsComplete"
+                    <div
+                        class="input_inline mx-0 my-3 flex items-center justify-between"
+                    >
+                        <div class="flex items-center">
+                            <label
+                                for="inputBookIsComplete"
+                                class="mr-3 font-bold text-sky-500"
                                 >Selesai dibaca</label
                             >
                             <input id="inputBookIsComplete" type="checkbox" />
                         </div>
                         <div>
-                            <button id="cancelAddBook">Batal</button>
+                            <button
+                                id="cancelAddBook"
+                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                            >
+                                Batal
+                            </button>
                         </div>
                     </div>
-                    <button id="inputBook" type="submit">
-                        Masukkan Buku ke rak <span>Belum selesai dibaca</span>
+                    <button
+                        id="inputBook"
+                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                        type="submit"
+                    >
+                        Masukkan Buku ke rak
+                        <span class="font-bold">Belum selesai dibaca</span>
                     </button>
                 </form>
             </section>
 
-            <section class="book_shelf_section">
-                <section class="book_shelf shadow">
-                    <h2>Belum selesai dibaca</h2>
+            <section class="flex gap-x-4">
+                <section
+                    class="book_shelf m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md"
+                >
+                    <h2 class="m-3 mb-0 text-3xl font-bold text-sky-500">
+                        Belum selesai dibaca
+                    </h2>
 
-                    <div id="incompleteBookshelfList" class="book_list"></div>
+                    <div
+                        id="incompleteBookshelfList"
+                        class="book_list p-2"
+                    ></div>
                 </section>
 
-                <section class="book_shelf shadow">
-                    <h2>Selesai dibaca</h2>
+                <section
+                    class="book_shelf m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md"
+                >
+                    <h2 class="m-3 mb-0 text-3xl font-bold text-sky-500">
+                        Selesai dibaca
+                    </h2>
 
-                    <div id="completeBookshelfList" class="book_list"></div>
+                    <div id="completeBookshelfList" class="book_list p-2"></div>
                 </section>
             </section>
 
-            <section class="edit_section input_section shadow">
-                <h2>Update Buku</h2>
+            <section
+                class="edit_section input_section input_section mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md"
+            >
+                <h2 class="text-center text-3xl font-bold text-sky-500">
+                    Update Buku
+                </h2>
                 <form id="updateBook">
-                    <div class="input">
-                        <label for="updateBookTitle">Judul</label>
+                    <div class="mx-0 my-2">
+                        <label
+                            for="updateBookTitle"
+                            class="font-bold text-sky-500"
+                            >Judul Buku</label
+                        >
                         <input
                             id="updateBookTitle"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
                             type="text"
+                            placeholder="Masukan Judul Buku"
                             autocomplete="off"
                             required
                         />
                     </div>
-                    <div class="input">
-                        <label for="updateBookAuthor">Penulis</label>
+                    <div class="mx-0 my-2">
+                        <label
+                            for="updateBookAuthor"
+                            class="font-bold text-sky-500"
+                            >Nama Penulis</label
+                        >
                         <input
                             id="updateBookAuthor"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
                             type="text"
+                            placeholder="Masukan Nama Penulis Buku"
                             autocomplete="off"
                             required
                         />
                     </div>
-                    <div class="input">
-                        <label for="updateBookYear">Tahun</label>
+                    <div class="mx-0 my-2">
+                        <label
+                            for="updateBookYear"
+                            class="font-bold text-sky-500"
+                            >Tahun Terbit</label
+                        >
                         <input
                             id="updateBookYear"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
                             type="number"
+                            placeholder="Masukan Tahun Terbit Buku"
                             minlength="4"
                             maxlength="4"
                             required
                         />
                     </div>
-                    <div class="input_inline">
-                        <div>
-                            <label for="updateBookIsComplete"
+                    <div
+                        class="input_inline mx-0 my-3 flex items-center justify-between"
+                    >
+                        <div class="flex items-center">
+                            <label
+                                for="updateBookIsComplete"
+                                class="mr-3 font-bold text-sky-500"
                                 >Selesai dibaca</label
                             >
                             <input id="updateBookIsComplete" type="checkbox" />
                         </div>
                         <div>
-                            <button id="cancelEdit">Batal</button>
+                            <button
+                                id="cancelEdit"
+                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                            >
+                                Batal
+                            </button>
                         </div>
                     </div>
-                    <button id="bookSubmit" type="submit">Update Buku</button>
+                    <button
+                        id="bookSubmit"
+                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                        type="submit"
+                    >
+                        Update Buku
+                    </button>
                 </form>
             </section>
         </main>
