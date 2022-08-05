@@ -116,8 +116,16 @@
                         class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-darkColor"
                         type="button"
                     >
-                        <span title="Tambah Buku" class="text-xl sm:hidden"
+                        <span
+                            title="Tambah Buku"
+                            id="btnAddBook"
+                            class="text-xl sm:hidden"
                             ><i class="fa-solid fa-plus"></i></span
+                        ><span
+                            title="Batal Tambah Buku"
+                            id="btnCancelAddBook"
+                            class="hidden sm:hidden"
+                            ><i class="fa-solid fa-x"></i></span
                         ><span class="hidden sm:block">Tambah Buku</span>
                     </button>
                 </form>
@@ -192,7 +200,7 @@
                                 />
 
                                 <i
-                                    class="fa-solid fa-check check-1 absolute left-[109px] top-2 text-sm text-inherit opacity-0 transition"
+                                    class="fa-solid fa-check check-1 absolute left-[109px] top-[7px] text-sm text-inherit opacity-0 transition"
                                 ></i>
                             </label>
                         </div>

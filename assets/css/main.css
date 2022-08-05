@@ -601,12 +601,16 @@ video {
   left: 7rem;
 }
 
-.top-2 {
-  top: 0.5rem;
+.left-\[109px\] {
+  left: 115px;
 }
 
-.left-\[109px\] {
-  left: 109px;
+.top-\[7px\] {
+  top: 7px;
+}
+
+.top-2 {
+  top: 0.5rem;
 }
 
 .m-0 {

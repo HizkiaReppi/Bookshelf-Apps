@@ -13,6 +13,9 @@ function isStorageExist() {
 }
 
 document.querySelector('#addBookBtn').addEventListener('click', () => {
+    document.querySelector('#btnCancelAddBook').classList.remove('hidden');
+    document.querySelector('#btnCancelAddBook').classList.add('block');
+    document.querySelector('#btnAddBook').classList.add('hidden');
     document.querySelector('#editSection').classList.remove('flex');
     document.querySelector('#editSection').classList.add('hidden');
     document.querySelector('#inputSection').classList.remove('hidden');
@@ -401,6 +404,9 @@ const cancelAddBook = document.querySelector('#cancelAddBook');
 cancelAddBook.addEventListener('click', (e) => {
     document.querySelector('#inputSection').classList.remove('flex');
     document.querySelector('#inputSection').classList.add('hidden');
+    document.querySelector('#btnAddBook').classList.remove('hidden');
+    document.querySelector('#btnAddBook').classList.add('block');
+    document.querySelector('#btnCancelAddBook').classList.add('hidden');
     e.preventDefault();
 });
 

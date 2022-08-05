@@ -9,7 +9,8 @@ module.exports = {
                 darkColor: '#282929',
             },
             inset: {
-                '[109px]': '109px',
+                '[109px]': '115px',
+                '[7.5px]': '7.5px',
             },
         },
     },
