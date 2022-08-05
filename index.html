@@ -8,7 +8,6 @@
         />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Bookshelf Apps</title>
-        <!-- <link rel="stylesheet" href="assets/css/style.css" /> -->
         <link rel="stylesheet" href="assets/css/main.css" />
         <script
             src="https://kit.fontawesome.com/29057e6c17.js"
@@ -16,50 +15,67 @@
         ></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
-    <body>
+    <body class="dark:bg-slate-900">
         <header
-            class="head_bar flex items-center justify-center bg-sky-500 p-5 text-4xl font-bold text-white"
+            class="flex items-center justify-center bg-sky-500 p-5 text-white dark:bg-slate-800"
         >
-            <h1 class="head_bar__title">Bookshelf Apps</h1>
+            <h1 class="text-3xl font-bold sm:text-4xl">Bookshelf Apps</h1>
         </header>
-        <main class="px-4 pt-0 pb-4 font-sans">
+        <main class="px-4 pt-0 pb-4 font-sans dark:text-white">
             <div
-                class="information_section m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md"
+                class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md dark:border-slate-700"
             >
-                <h2 class="text-3xl font-bold text-sky-500">
+                <h2
+                    class="text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                >
                     Informasi Rak Buku
                 </h2>
 
                 <div
-                    class="information-wrap m-auto mt-3 flex w-full flex-row content-around justify-center gap-56"
+                    class="m-auto mt-3 flex w-full flex-col content-around justify-evenly sm:flex-row"
                 >
                     <div
-                        class="information-item my-auto mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-5 text-white shadow-2xl"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-slate-700 sm:my-auto sm:w-48 sm:p-8"
                     >
-                        <span class="pt-2">Jumlah Buku</span>
-                        <span id="totalBookCount">0</span>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-book-open"></i
+                            ><span id="totalBookCount">0</span>
+                        </div>
+                        <span class="pt-2">Total Buku</span>
                     </div>
 
                     <div
-                        class="information-item my-auto mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-5 text-white shadow-2xl"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-slate-700 sm:my-auto sm:w-48 sm:p-8"
                     >
-                        <span class="pt-2">Belum Selesai</span>
-                        <span id="totalNotCompleteCount">0</span>
-                    </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check"></i
+                            ><span id="totalCompleteCount">0</span>
+                        </div>
 
-                    <div
-                        class="information-item my-auto mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-5 text-white shadow-md"
-                    >
                         <span class="pt-2">Selesai Dibaca</span>
-                        <span id="totalCompleteCount">0</span>
+                    </div>
+
+                    <div
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-slate-700 sm:my-auto sm:w-48 sm:p-8"
+                    >
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-xmark"></i
+                            ><span id="totalNotCompleteCount">0</span>
+                        </div>
+
+                        <span class="pt-2">Belum Selesai</span>
                     </div>
                 </div>
             </div>
 
             <section
-                class="search_section m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md"
+                class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md dark:border-slate-700"
             >
-                <h2 class="text-3xl font-bold text-sky-500">Cari Buku</h2>
+                <h2
+                    class="text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                >
+                    Cari Buku
+                </h2>
                 <form
                     id="searchBook"
                     class="flex w-full justify-around gap-5 p-5"
@@ -78,38 +94,50 @@
                     />
 
                     <button
-                        id="searchSubmit"
-                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out"
+                        id="darkModeToggle"
+                        class="hidden w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out sm:block"
                         type="submit"
                     >
-                        Cari
+                        Dark Mode
+                    </button>
+                    <button
+                        id="whiteModeToggle"
+                        class="hidden w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-slate-700"
+                        type="submit"
+                    >
+                        White Mode
                     </button>
                     <button
                         id="addBookBtn"
-                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out"
+                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-slate-700"
                         type="button"
                     >
-                        Tambah Buku
+                        <span title="Tambah Buku" class="text-xl sm:hidden"
+                            ><i class="fa-solid fa-plus"></i></span
+                        ><span class="hidden sm:block">Tambah Buku</span>
                     </button>
                 </form>
             </section>
 
             <section
-                class="input_section mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md transition duration-500 ease-in-out"
+                id="inputSection"
+                class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md transition duration-500 ease-in-out dark:border-slate-700"
             >
-                <h2 class="text-center text-3xl font-bold text-sky-500">
+                <h2
+                    class="text-center text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                >
                     Masukkan Buku Baru
                 </h2>
                 <form id="inputBook">
                     <div class="mx-0 my-2">
                         <label
                             for="inputBookTitle"
-                            class="font-bold text-sky-500"
+                            class="font-bold text-sky-500 dark:text-slate-100"
                             >Judul Buku</label
                         >
                         <input
                             id="inputBookTitle"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
                             type="text"
                             placeholder="Masukan Judul Buku"
                             autocomplete="off"
@@ -119,12 +147,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="inputBookAuthor"
-                            class="font-bold text-sky-500"
+                            class="font-bold text-sky-500 dark:text-slate-100"
                             >Nama Penulis</label
                         >
                         <input
                             id="inputBookAuthor"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
                             type="text"
                             placeholder="Masukan Nama Penulis Buku"
                             autocomplete="off"
@@ -134,12 +162,12 @@
                     <div class="input mx-0 my-2">
                         <label
                             for="inputBookYear"
-                            class="font-bold text-sky-500"
+                            class="font-bold text-sky-500 dark:text-slate-100"
                             >Tahun Terbit</label
                         >
                         <input
                             id="inputBookYear"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
                             type="number"
                             placeholder="Masukan Tahun Terbit Buku"
                             minlength="4"
@@ -147,13 +175,11 @@
                             required
                         />
                     </div>
-                    <div
-                        class="input_inline mx-0 my-3 flex items-center justify-between"
-                    >
+                    <div class="mx-0 my-3 flex items-center justify-between">
                         <div class="flex items-center">
                             <label
                                 for="inputBookIsComplete"
-                                class="mr-3 font-bold text-sky-500"
+                                class="mr-3 font-bold text-sky-500 dark:text-slate-100"
                                 >Selesai dibaca</label
                             >
                             <input id="inputBookIsComplete" type="checkbox" />
@@ -161,7 +187,7 @@
                         <div>
                             <button
                                 id="cancelAddBook"
-                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
                             >
                                 Batal
                             </button>
@@ -169,7 +195,7 @@
                     </div>
                     <button
                         id="inputBook"
-                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
                         type="submit"
                     >
                         Masukkan Buku ke rak
@@ -178,11 +204,13 @@
                 </form>
             </section>
 
-            <section class="flex gap-x-4">
+            <section class="flex flex-col gap-x-4 md:flex-row">
                 <section
-                    class="book_shelf m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md"
+                    class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-slate-700"
                 >
-                    <h2 class="m-3 mb-0 text-3xl font-bold text-sky-500">
+                    <h2
+                        class="m-3 mb-0 text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                    >
                         Belum selesai dibaca
                     </h2>
 
@@ -193,9 +221,11 @@
                 </section>
 
                 <section
-                    class="book_shelf m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md"
+                    class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-slate-700"
                 >
-                    <h2 class="m-3 mb-0 text-3xl font-bold text-sky-500">
+                    <h2
+                        class="m-3 mb-0 text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                    >
                         Selesai dibaca
                     </h2>
 
@@ -204,21 +234,24 @@
             </section>
 
             <section
-                class="edit_section input_section input_section mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md"
+                id="editSection"
+                class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md dark:border-slate-700"
             >
-                <h2 class="text-center text-3xl font-bold text-sky-500">
+                <h2
+                    class="text-center text-3xl font-bold text-sky-500 dark:text-slate-100"
+                >
                     Update Buku
                 </h2>
                 <form id="updateBook">
                     <div class="mx-0 my-2">
                         <label
                             for="updateBookTitle"
-                            class="font-bold text-sky-500"
+                            class="font-bold text-sky-500 dark:text-slate-100"
                             >Judul Buku</label
                         >
                         <input
                             id="updateBookTitle"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
                             type="text"
                             placeholder="Masukan Judul Buku"
                             autocomplete="off"
@@ -228,12 +261,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="updateBookAuthor"
-                            class="font-bold text-sky-500"
+                            class="font-bold text-sky-500 dark:text-slate-100"
                             >Nama Penulis</label
                         >
                         <input
                             id="updateBookAuthor"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
                             type="text"
                             placeholder="Masukan Nama Penulis Buku"
                             autocomplete="off"
@@ -243,12 +276,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="updateBookYear"
-                            class="font-bold text-sky-500"
+                            class="font-bold text-sky-500 dark:text-slate-100"
                             >Tahun Terbit</label
                         >
                         <input
                             id="updateBookYear"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
                             type="number"
                             placeholder="Masukan Tahun Terbit Buku"
                             minlength="4"
@@ -256,13 +289,11 @@
                             required
                         />
                     </div>
-                    <div
-                        class="input_inline mx-0 my-3 flex items-center justify-between"
-                    >
+                    <div class="mx-0 my-3 flex items-center justify-between">
                         <div class="flex items-center">
                             <label
                                 for="updateBookIsComplete"
-                                class="mr-3 font-bold text-sky-500"
+                                class="mr-3 font-bold text-sky-500 dark:text-slate-100"
                                 >Selesai dibaca</label
                             >
                             <input id="updateBookIsComplete" type="checkbox" />
@@ -270,7 +301,7 @@
                         <div>
                             <button
                                 id="cancelEdit"
-                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
                             >
                                 Batal
                             </button>
@@ -278,7 +309,7 @@
                     </div>
                     <button
                         id="bookSubmit"
-                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out"
+                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
                         type="submit"
                     >
                         Update Buku

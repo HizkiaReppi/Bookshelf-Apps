@@ -13,10 +13,10 @@ function isStorageExist() {
 }
 
 document.querySelector('#addBookBtn').addEventListener('click', () => {
-    document.querySelector('.edit_section').classList.remove('flex');
-    document.querySelector('.input_section').classList.add('hidden');
-    document.querySelector('.input_section').classList.remove('hidden');
-    document.querySelector('.input_section').classList.add('flex');
+    document.querySelector('#editSection').classList.remove('flex');
+    document.querySelector('#editSection').classList.add('hidden');
+    document.querySelector('#inputSection').classList.remove('hidden');
+    document.querySelector('#inputSection').classList.add('flex');
 });
 
 function saveData() {
@@ -80,8 +80,8 @@ function addBook() {
         text: `BUKU ${textTitle} BERHASIL DITAMBAH!`,
     });
 
-    document.querySelector('.input_section').classList.remove('flex');
-    document.querySelector('.input_section').classList.add('hidden');
+    document.querySelector('#inputSection').classList.remove('flex');
+    document.querySelector('#inputSection').classList.add('hidden');
 
     getBooksInformation();
 }
@@ -109,8 +109,8 @@ function updateBook(bookId) {
         text: `BUKU ${bookTarget.title} BERHASIL DIUPDATE!`,
     });
 
-    document.querySelector('.edit_section').classList.remove('flex');
-    document.querySelector('.edit_section').classList.add('hidden');
+    document.querySelector('#editSection').classList.remove('flex');
+    document.querySelector('#editSection').classList.add('hidden');
 
     getBooksInformation();
 }
@@ -226,15 +226,21 @@ function loadDataFromStorage() {
 
 function makeBook(bookObject) {
     const textTitle = document.createElement('h3');
-    textTitle.classList.add('my-3', 'mx-0', 'text-xl', 'font-bold');
+    textTitle.classList.add(
+        'my-3',
+        'mx-0',
+        'text-lg',
+        'sm:text-2xl',
+        'font-bold'
+    );
     textTitle.innerText = bookObject.title;
 
     const textAuthor = document.createElement('p');
-    textAuthor.classList.add('my-2', 'mx-0');
+    textAuthor.classList.add('my-2', 'mx-0', 'sm:text-lg', 'text-base');
     textAuthor.innerText = `Penulis: ${bookObject.author}`;
 
     const textYear = document.createElement('p');
-    textYear.classList.add('my-2', 'mx-0');
+    textYear.classList.add('my-2', 'mx-0', 'sm:text-lg', 'text-base');
     textYear.innerText = `Tahun: ${bookObject.year}`;
 
     const article = document.createElement('article');
@@ -246,7 +252,8 @@ function makeBook(bookObject) {
         'border',
         'border-solid',
         'border-black',
-        'rounded-md'
+        'rounded-md',
+        'dark:border-slate-700'
     );
     article.append(textTitle, textAuthor, textYear);
     article.setAttribute('id', `${bookObject.id}`);
@@ -320,10 +327,10 @@ function makeBook(bookObject) {
     updateButton.setAttribute('title', 'Edit Buku');
     updateButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
     updateButton.addEventListener('click', function () {
-        document.querySelector('.input_section').classList.remove('flex');
-        document.querySelector('.input_section').classList.add('hidden');
-        document.querySelector('.edit_section').classList.remove('hidden');
-        document.querySelector('.edit_section').classList.add('flex');
+        document.querySelector('#inputSection').classList.remove('flex');
+        document.querySelector('#inputSection').classList.add('hidden');
+        document.querySelector('#editSection').classList.remove('hidden');
+        document.querySelector('#editSection').classList.add('flex');
 
         const bookId = bookObject.id;
 
@@ -379,7 +386,7 @@ function makeBook(bookObject) {
     });
 
     const buttonContainer = document.createElement('div');
-    buttonContainer.classList.add('action', 'flex', 'gap-2');
+    buttonContainer.classList.add('flex', 'gap-2');
     buttonContainer.append(undoButton, updateButton, trashButton);
 
     article.append(buttonContainer);
@@ -389,15 +396,31 @@ function makeBook(bookObject) {
 
 const cancelAddBook = document.querySelector('#cancelAddBook');
 cancelAddBook.addEventListener('click', (e) => {
-    document.querySelector('.input_section').classList.remove('flex');
-    document.querySelector('.input_section').classList.add('hidden');
+    document.querySelector('#inputSection').classList.remove('flex');
+    document.querySelector('#inputSection').classList.add('hidden');
     e.preventDefault();
 });
 
 const cancelEdit = document.querySelector('#cancelEdit');
 cancelEdit.addEventListener('click', (e) => {
-    document.querySelector('.edit_section').classList.remove('flex');
-    document.querySelector('.edit_section').classList.add('hidden');
+    document.querySelector('#editSection').classList.remove('flex');
+    document.querySelector('#editSection').classList.add('hidden');
+    e.preventDefault();
+});
+
+const darkModeToggle = document.querySelector('#darkModeToggle');
+darkModeToggle.addEventListener('click', (e) => {
+    document.querySelector('html').classList.add('dark');
+    darkModeToggle.classList.remove('sm:block');
+    whiteModeToggle.classList.add('sm:block');
+    e.preventDefault();
+});
+
+const whiteModeToggle = document.querySelector('#whiteModeToggle');
+whiteModeToggle.addEventListener('click', (e) => {
+    document.querySelector('html').classList.remove('dark');
+    whiteModeToggle.classList.remove('sm:block');
+    darkModeToggle.classList.add('sm:block');
     e.preventDefault();
 });
 
