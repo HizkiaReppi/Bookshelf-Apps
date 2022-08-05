@@ -4,8 +4,10 @@
         "final": "npx tailwindcss -o ./assets/css/main.css --minify "
     },
     "dependencies": {
+        "@sweetalert2/themes": "^5.0.11",
         "autoprefixer": "^10.4.8",
         "postcss": "^8.4.14",
+        "sweetalert2": "^11.4.24",
         "tailwindcss": "^3.1.7"
     },
     "devDependencies": {

@@ -268,7 +268,8 @@ function makeBook(bookObject) {
         'hover:shadow-xl',
         'hover:scale-105',
         'hover:ease-in-out',
-        'hover:duration-300'
+        'hover:duration-300',
+        'dark:bg-green-900'
     );
 
     if (bookObject.isCompleted) {
@@ -322,7 +323,8 @@ function makeBook(bookObject) {
         'hover:shadow-xl',
         'hover:scale-105',
         'hover:ease-in-out',
-        'hover:duration-300'
+        'hover:duration-300',
+        'dark:bg-amber-900'
     );
     updateButton.setAttribute('title', 'Edit Buku');
     updateButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
@@ -364,7 +366,8 @@ function makeBook(bookObject) {
         'hover:shadow-xl',
         'hover:scale-105',
         'hover:ease-in-out',
-        'hover:duration-300'
+        'hover:duration-300',
+        'dark:bg-red-900'
     );
     trashButton.setAttribute('title', 'Hapus Buku');
     trashButton.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
@@ -411,17 +414,30 @@ cancelEdit.addEventListener('click', (e) => {
 const darkModeToggle = document.querySelector('#darkModeToggle');
 darkModeToggle.addEventListener('click', (e) => {
     document.querySelector('html').classList.add('dark');
-    darkModeToggle.classList.remove('sm:block');
-    whiteModeToggle.classList.add('sm:block');
+    darkModeToggle.classList.remove('block');
+    darkModeToggle.classList.add('hidden');
+    whiteModeToggle.classList.remove('hidden');
+    whiteModeToggle.classList.add('block');
     e.preventDefault();
+
+    const head = document.querySelector('head');
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('href', 'assets/css/sweetalert2.dark.min.css');
+    head.appendChild(link);
 });
 
 const whiteModeToggle = document.querySelector('#whiteModeToggle');
 whiteModeToggle.addEventListener('click', (e) => {
     document.querySelector('html').classList.remove('dark');
-    whiteModeToggle.classList.remove('sm:block');
-    darkModeToggle.classList.add('sm:block');
+    whiteModeToggle.classList.remove('block');
+    whiteModeToggle.classList.add('hidden');
+    darkModeToggle.classList.remove('hidden');
+    darkModeToggle.classList.add('block');
     e.preventDefault();
+
+    const link = document.getElementsByTagName('link')[2];
+    link.remove();
 });
 
 function getBooksInformation() {

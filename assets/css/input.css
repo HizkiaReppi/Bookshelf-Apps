@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#inputBookIsComplete:checked ~ i,
+#updateBookIsComplete:checked ~ i {
+    @apply opacity-100;
+}

@@ -9,21 +9,21 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Bookshelf Apps</title>
         <link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/sweetalert2.min.css" />
         <script
             src="https://kit.fontawesome.com/29057e6c17.js"
             crossorigin="anonymous"
         ></script>
-        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
-    <body class="dark:bg-slate-900">
+    <body class="dark:bg-bgDark">
         <header
-            class="flex items-center justify-center bg-sky-500 p-5 text-white dark:bg-slate-800"
+            class="flex items-center justify-center bg-sky-500 p-5 text-white dark:bg-darkColor"
         >
             <h1 class="text-3xl font-bold sm:text-4xl">Bookshelf Apps</h1>
         </header>
         <main class="px-4 pt-0 pb-4 font-sans dark:text-white">
             <div
-                class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md dark:border-slate-700"
+                class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md dark:border-darkColor"
             >
                 <h2
                     class="text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
@@ -35,7 +35,7 @@
                     class="m-auto mt-3 flex w-full flex-col content-around justify-evenly sm:flex-row"
                 >
                     <div
-                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-slate-700 sm:my-auto sm:w-48 sm:p-8"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-darkColor sm:my-auto sm:w-48 sm:p-8"
                     >
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-book-open"></i
@@ -45,7 +45,7 @@
                     </div>
 
                     <div
-                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-slate-700 sm:my-auto sm:w-48 sm:p-8"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-darkColor sm:my-auto sm:w-48 sm:p-8"
                     >
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-circle-check"></i
@@ -56,7 +56,7 @@
                     </div>
 
                     <div
-                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-slate-700 sm:my-auto sm:w-48 sm:p-8"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-darkColor sm:my-auto sm:w-48 sm:p-8"
                     >
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-circle-xmark"></i
@@ -69,7 +69,7 @@
             </div>
 
             <section
-                class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md dark:border-slate-700"
+                class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-2 shadow-md dark:border-darkColor sm:p-4"
             >
                 <h2
                     class="text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
@@ -78,7 +78,7 @@
                 </h2>
                 <form
                     id="searchBook"
-                    class="flex w-full justify-around gap-5 p-5"
+                    class="flex w-full justify-around gap-3 p-5 sm:gap-5"
                 >
                     <label
                         for="searchBookTitle"
@@ -87,7 +87,7 @@
                     ></label>
                     <input
                         id="searchBookTitle"
-                        class="w-full rounded-lg border-2 border-l-slate-900 border-t-slate-900 border-r-slate-700 border-b-slate-600 p-3"
+                        class="w-full rounded-lg border-2 border-l-slate-900 border-t-slate-900 border-r-slate-700 border-b-slate-600 p-1 text-xs placeholder:text-xs dark:border-slate-700 dark:text-slate-900 sm:p-3 sm:text-base sm:placeholder:text-base"
                         type="text"
                         autocomplete="off"
                         placeholder="Cari Berdasarkan Judul Buku"
@@ -95,21 +95,25 @@
 
                     <button
                         id="darkModeToggle"
-                        class="hidden w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out sm:block"
+                        class="block w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out"
                         type="submit"
                     >
-                        Dark Mode
+                        <span title="Mode Gelap" class="text-lg sm:hidden"
+                            ><i class="fa-solid fa-moon"></i></span
+                        ><span class="hidden sm:block"> Mode Gelap</span>
                     </button>
                     <button
                         id="whiteModeToggle"
-                        class="hidden w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-slate-700"
+                        class="hidden w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-darkColor"
                         type="submit"
                     >
-                        White Mode
+                        <span title="Mode Terang" class="text-lg sm:hidden"
+                            ><i class="fa-solid fa-sun"></i></span
+                        ><span class="hidden sm:block"> Mode Terang</span>
                     </button>
                     <button
                         id="addBookBtn"
-                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-slate-700"
+                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-darkColor"
                         type="button"
                     >
                         <span title="Tambah Buku" class="text-xl sm:hidden"
@@ -121,7 +125,7 @@
 
             <section
                 id="inputSection"
-                class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md transition duration-500 ease-in-out dark:border-slate-700"
+                class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md transition duration-500 ease-in-out dark:border-darkColor"
             >
                 <h2
                     class="text-center text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
@@ -179,15 +183,23 @@
                         <div class="flex items-center">
                             <label
                                 for="inputBookIsComplete"
-                                class="mr-3 font-bold text-sky-500 dark:text-slate-100"
-                                >Selesai dibaca</label
-                            >
-                            <input id="inputBookIsComplete" type="checkbox" />
+                                class="relative mr-3 cursor-pointer font-bold text-sky-500 dark:text-slate-100"
+                                >Selesai Dibaca
+                                <input
+                                    id="inputBookIsComplete"
+                                    class="absolute top-1 left-28 appearance-none rounded-lg border-2 border-sky-500 p-2 dark:border-inherit"
+                                    type="checkbox"
+                                />
+
+                                <i
+                                    class="fa-solid fa-check check-1 absolute left-[109px] top-2 text-sm text-inherit opacity-0 transition"
+                                ></i>
+                            </label>
                         </div>
                         <div>
                             <button
                                 id="cancelAddBook"
-                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
+                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
                             >
                                 Batal
                             </button>
@@ -195,7 +207,7 @@
                     </div>
                     <button
                         id="inputBook"
-                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
+                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
                         type="submit"
                     >
                         Masukkan Buku ke rak
@@ -206,7 +218,7 @@
 
             <section class="flex flex-col gap-x-4 md:flex-row">
                 <section
-                    class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-slate-700"
+                    class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-darkColor"
                 >
                     <h2
                         class="m-3 mb-0 text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
@@ -221,7 +233,7 @@
                 </section>
 
                 <section
-                    class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-slate-700"
+                    class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-darkColor"
                 >
                     <h2
                         class="m-3 mb-0 text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
@@ -235,7 +247,7 @@
 
             <section
                 id="editSection"
-                class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md dark:border-slate-700"
+                class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md dark:border-darkColor"
             >
                 <h2
                     class="text-center text-3xl font-bold text-sky-500 dark:text-slate-100"
@@ -293,15 +305,23 @@
                         <div class="flex items-center">
                             <label
                                 for="updateBookIsComplete"
-                                class="mr-3 font-bold text-sky-500 dark:text-slate-100"
-                                >Selesai dibaca</label
-                            >
-                            <input id="updateBookIsComplete" type="checkbox" />
+                                class="relative mr-3 cursor-pointer font-bold text-sky-500 dark:text-slate-100"
+                                >Selesai Dibaca
+                                <input
+                                    id="updateBookIsComplete"
+                                    class="absolute top-1 left-28 appearance-none rounded-lg border-2 border-sky-500 p-2 dark:border-inherit"
+                                    type="checkbox"
+                                />
+
+                                <i
+                                    class="fa-solid fa-check check-1 absolute left-[109px] top-2 text-sm text-inherit opacity-0 transition"
+                                ></i>
+                            </label>
                         </div>
                         <div>
                             <button
                                 id="cancelEdit"
-                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
+                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
                             >
                                 Batal
                             </button>
@@ -309,7 +329,7 @@
                     </div>
                     <button
                         id="bookSubmit"
-                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-slate-700"
+                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
                         type="submit"
                     >
                         Update Buku
@@ -319,5 +339,6 @@
         </main>
 
         <script src="assets/js/main.js"></script>
+        <script src="assets/js/sweetalert2.min.js"></script>
     </body>
 </html>
