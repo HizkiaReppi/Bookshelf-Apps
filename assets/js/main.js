@@ -173,7 +173,6 @@ function updateBook(bookId) {
         bookTarget.author = updateAuthor;
         bookTarget.year = updateYear;
         bookTarget.isCompleted = isComplete;
-        bookTarget.imageUrl = imageUrl;
 
         document.dispatchEvent(new Event(RENDER_EVENT));
         saveData();
@@ -348,16 +347,7 @@ function makeBook(bookObject) {
 
     const undoButton = document.createElement('button');
     undoButton.classList.add(
-        'p-3',
-        'bg-green-500',
-        'text-white',
-        'shadow-md',
-        'rounded-md',
-        'hover:shadow-xl',
-        'hover:scale-105',
-        'hover:ease-in-out',
-        'hover:duration-300',
-        'dark:bg-green-900'
+        'btn-success',
     );
 
     if (bookObject.isCompleted) {
@@ -402,17 +392,7 @@ function makeBook(bookObject) {
 
     const updateButton = document.createElement('button');
     updateButton.classList.add(
-        'py-3',
-        'px-4',
-        'bg-amber-500',
-        'text-white',
-        'shadow-md',
-        'rounded-md',
-        'hover:shadow-xl',
-        'hover:scale-105',
-        'hover:ease-in-out',
-        'hover:duration-300',
-        'dark:bg-amber-900'
+        'btn-warning',
     );
     updateButton.setAttribute('title', 'Edit Buku');
     updateButton.innerHTML = '<i class="fa-regular fa-pen-to-square"></i>';
@@ -421,6 +401,7 @@ function makeBook(bookObject) {
         document.querySelector('#inputSection').classList.add('hidden');
         document.querySelector('#editSection').classList.remove('hidden');
         document.querySelector('#editSection').classList.add('flex');
+        document.querySelector('#editSection').scrollIntoView();
 
         const bookId = bookObject.id;
 
@@ -447,17 +428,7 @@ function makeBook(bookObject) {
 
     const trashButton = document.createElement('button');
     trashButton.classList.add(
-        'py-3',
-        'px-4',
-        'bg-red-600',
-        'text-white',
-        'shadow-md',
-        'rounded-md',
-        'hover:shadow-xl',
-        'hover:scale-105',
-        'hover:ease-in-out',
-        'hover:duration-300',
-        'dark:bg-red-900'
+        'btn-danger',
     );
     trashButton.setAttribute('title', 'Hapus Buku');
     trashButton.innerHTML = '<i class="fa-regular fa-trash-can"></i>';

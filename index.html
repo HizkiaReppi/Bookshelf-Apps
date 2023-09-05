@@ -17,7 +17,7 @@
     </head>
     <body class="dark:bg-bgDark">
         <header
-            class="flex items-center justify-center bg-sky-500 p-5 text-white dark:bg-darkColor"
+            class="flex items-center justify-center bg-blue-700 p-5 text-white dark:bg-gray-800"
         >
             <h1 class="text-3xl font-bold sm:text-4xl">Bookshelf Apps</h1>
         </header>
@@ -26,7 +26,7 @@
                 class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-4 shadow-md dark:border-darkColor"
             >
                 <h2
-                    class="text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                    class="text-2xl block mb-2 font-medium text-gray-900 dark:text-white sm:text-3xl"
                 >
                     Informasi Rak Buku
                 </h2>
@@ -35,7 +35,7 @@
                     class="m-auto mt-3 flex w-full flex-col content-around justify-evenly sm:flex-row"
                 >
                     <div
-                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-darkColor sm:my-auto sm:w-48 sm:p-8"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-blue-700 p-4 text-lg text-white shadow-md dark:bg-gray-800 sm:my-auto sm:w-48 sm:p-8"
                     >
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-book-open"></i
@@ -45,7 +45,7 @@
                     </div>
 
                     <div
-                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-darkColor sm:my-auto sm:w-48 sm:p-8"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-blue-700 p-4 text-lg text-white shadow-md dark:bg-gray-800 sm:my-auto sm:w-48 sm:p-8"
                     >
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-circle-check"></i
@@ -56,7 +56,7 @@
                     </div>
 
                     <div
-                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-sky-500 p-4 text-lg text-white shadow-md dark:bg-darkColor sm:my-auto sm:w-48 sm:p-8"
+                        class="w-70 my-3 mx-3 flex flex-col content-center items-center rounded-xl bg-blue-700 p-4 text-lg text-white shadow-md dark:bg-gray-800 sm:my-auto sm:w-48 sm:p-8"
                     >
                         <div class="flex items-center gap-2">
                             <i class="fa-solid fa-circle-xmark"></i
@@ -72,7 +72,7 @@
                 class="m-0 mt-4 flex flex-col items-center rounded-xl border border-solid border-black p-2 shadow-md dark:border-darkColor sm:p-4"
             >
                 <h2
-                    class="text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                    class="text-2xl block mb-2 font-medium text-gray-900 dark:text-white sm:text-3xl"
                 >
                     Cari Buku
                 </h2>
@@ -95,7 +95,7 @@
 
                     <button
                         id="darkModeToggle"
-                        class="block w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out"
+                        class="block w-1/4 cursor-pointer btn-primary"
                         type="submit"
                     >
                         <span title="Mode Gelap" class="text-lg sm:hidden"
@@ -104,7 +104,7 @@
                     </button>
                     <button
                         id="whiteModeToggle"
-                        class="hidden w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-darkColor"
+                        class="hidden w-1/4 cursor-pointer btn-primary"
                         type="submit"
                     >
                         <span title="Mode Terang" class="text-lg sm:hidden"
@@ -113,7 +113,7 @@
                     </button>
                     <button
                         id="addBookBtn"
-                        class="w-1/4 cursor-pointer rounded-md border bg-sky-500 text-lg text-white shadow-xl hover:scale-105 hover:bg-sky-600 hover:shadow-md hover:duration-300 hover:ease-in-out dark:border-none dark:bg-darkColor"
+                        class="w-1/4 cursor-pointer btn-primary"
                         type="button"
                     >
                         <span
@@ -136,7 +136,7 @@
                 class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md transition duration-500 ease-in-out dark:border-darkColor"
             >
                 <h2
-                    class="text-center text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                    class="text-center text-2xl block mb-2 font-medium text-gray-900 dark:text-white sm:text-3xl"
                 >
                     Masukkan Buku Baru
                 </h2>
@@ -144,12 +144,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="inputBookTitle"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >Judul Buku</label
                         >
                         <input
                             id="inputBookTitle"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
+                            class="input-form"
                             type="text"
                             placeholder="Masukan Judul Buku"
                             autocomplete="off"
@@ -159,12 +159,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="inputBookAuthor"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >Nama Penulis</label
                         >
                         <input
                             id="inputBookAuthor"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
+                            class="input-form"
                             type="text"
                             placeholder="Masukan Nama Penulis Buku"
                             autocomplete="off"
@@ -174,12 +174,12 @@
                     <div class="input mx-0 my-2">
                         <label
                             for="inputBookYear"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >Tahun Terbit</label
                         >
                         <input
                             id="inputBookYear"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
+                            class="input-form"
                             type="number"
                             placeholder="Masukan Tahun Terbit Buku"
                             minlength="4"
@@ -190,38 +190,32 @@
                     <div class="input mx-0 my-2">
                         <label
                             for="inputBookImage"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
                             Cover Buku
                         </label>
                         <img id="imagePreview" class="max-h-56 mb-2">
                         <input
                             id="inputBookImage"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 placeholder-blue-700 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                             type="file"
                         />
                     </div>
                     <div class="mx-0 my-3 flex items-center justify-between">
-                        <div class="flex items-center">
-                            <label
-                                for="inputBookIsComplete"
-                                class="relative mr-3 cursor-pointer font-bold text-sky-500 dark:text-slate-100"
-                                >Selesai Dibaca
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
                                 <input
-                                    id="inputBookIsComplete"
-                                    class="absolute top-1 left-28 appearance-none rounded-lg border-2 border-sky-500 p-2 dark:border-inherit"
                                     type="checkbox"
+                                    id="inputBookIsComplete"
+                                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                 />
-
-                                <i
-                                    class="fa-solid fa-check check-1 absolute left-[109px] top-[7px] text-sm text-inherit opacity-0 transition"
-                                ></i>
-                            </label>
+                            </div>
+                            <label for="inputBookIsComplete" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Selesai Dibaca</label>
                         </div>
                         <div>
                             <button
                                 id="cancelAddBook"
-                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
+                                class="btn-primary"
                             >
                                 Batal
                             </button>
@@ -229,7 +223,7 @@
                     </div>
                     <button
                         id="inputBook"
-                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
+                        class="w-full btn-primary"
                         type="submit"
                     >
                         Masukkan Buku ke rak
@@ -243,7 +237,7 @@
                     class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-darkColor"
                 >
                     <h2
-                        class="m-3 mb-0 text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                        class="m-3 mb-0 text-2xl block font-medium text-gray-900 dark:text-white sm:text-3xl"
                     >
                         Belum selesai dibaca
                     </h2>
@@ -258,7 +252,7 @@
                     class="m-0 mt-4 w-full rounded-lg border border-solid border-black shadow-md dark:border-darkColor"
                 >
                     <h2
-                        class="m-3 mb-0 text-2xl font-bold text-sky-500 dark:text-slate-100 sm:text-3xl"
+                        class="m-3 mb-0 text-2xl block font-medium text-gray-900 dark:text-white sm:text-3xl"
                     >
                         Selesai dibaca
                     </h2>
@@ -272,7 +266,7 @@
                 class="mt-4 hidden flex-col rounded-xl border border-solid border-black p-4 shadow-md dark:border-darkColor"
             >
                 <h2
-                    class="text-center text-3xl font-bold text-sky-500 dark:text-slate-100"
+                    class="text-center text-3xl block mb-2 font-medium text-gray-900 dark:text-white"
                 >
                     Update Buku
                 </h2>
@@ -280,12 +274,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="updateBookTitle"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >Judul Buku</label
                         >
                         <input
                             id="updateBookTitle"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
+                            class="input-form"
                             type="text"
                             placeholder="Masukan Judul Buku"
                             autocomplete="off"
@@ -295,12 +289,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="updateBookAuthor"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >Nama Penulis</label
                         >
                         <input
                             id="updateBookAuthor"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
+                            class="input-form"
                             type="text"
                             placeholder="Masukan Nama Penulis Buku"
                             autocomplete="off"
@@ -310,12 +304,12 @@
                     <div class="mx-0 my-2">
                         <label
                             for="updateBookYear"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                             >Tahun Terbit</label
                         >
                         <input
                             id="updateBookYear"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2 dark:text-slate-900"
+                            class="input-form"
                             type="number"
                             placeholder="Masukan Tahun Terbit Buku"
                             minlength="4"
@@ -326,38 +320,32 @@
                     <div class="input mx-0 my-2">
                         <label
                             for="updateBookImage"
-                            class="font-bold text-sky-500 dark:text-slate-100"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
                             Cover Buku
                         </label>
                         <img id="updateImagePreview" class="max-h-56 mb-2">
                         <input
                             id="updateBookImage"
-                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
                             type="file"
                         />
                     </div>
                     <div class="mx-0 my-3 flex items-center justify-between">
-                        <div class="flex items-center">
-                            <label
-                                for="updateBookIsComplete"
-                                class="relative mr-3 cursor-pointer font-bold text-sky-500 dark:text-slate-100"
-                                >Selesai Dibaca
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
                                 <input
-                                    id="updateBookIsComplete"
-                                    class="absolute top-1 left-28 appearance-none rounded-lg border-2 border-sky-500 p-2 dark:border-inherit"
                                     type="checkbox"
+                                    id="updateBookIsComplete"
+                                    class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
                                 />
-
-                                <i
-                                    class="fa-solid fa-check check-1 absolute left-[109px] top-2 text-sm text-inherit opacity-0 transition"
-                                ></i>
-                            </label>
+                            </div>
+                            <label for="updateBookIsComplete" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Selesai Dibaca</label>
                         </div>
                         <div>
                             <button
                                 id="cancelEdit"
-                                class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
+                                class="btn-primary"
                             >
                                 Batal
                             </button>
@@ -365,7 +353,7 @@
                     </div>
                     <button
                         id="bookSubmit"
-                        class="block w-full cursor-pointer rounded-md border-0 bg-sky-500 p-2 text-white shadow-md hover:bg-sky-600 hover:shadow-xl hover:transition hover:duration-500 hover:ease-in-out dark:bg-darkColor"
+                        class="w-full btn-primary"
                         type="submit"
                     >
                         Update Buku
@@ -376,5 +364,6 @@
 
         <script src="assets/js/main.js"></script>
         <script src="assets/js/sweetalert2.min.js"></script>
+        <script src="assets/js/flowbite.min.js"></script>
     </body>
 </html>
