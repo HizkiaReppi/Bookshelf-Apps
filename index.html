@@ -140,7 +140,7 @@
                 >
                     Masukkan Buku Baru
                 </h2>
-                <form id="inputBook">
+                <form id="inputBook" enctype="multipart/form-data" method="POST">
                     <div class="mx-0 my-2">
                         <label
                             for="inputBookTitle"
@@ -185,6 +185,20 @@
                             minlength="4"
                             maxlength="4"
                             required
+                        />
+                    </div>
+                    <div class="input mx-0 my-2">
+                        <label
+                            for="inputBookImage"
+                            class="font-bold text-sky-500 dark:text-slate-100"
+                        >
+                            Cover Buku
+                        </label>
+                        <img id="imagePreview" class="max-h-56 mb-2">
+                        <input
+                            id="inputBookImage"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            type="file"
                         />
                     </div>
                     <div class="mx-0 my-3 flex items-center justify-between">
@@ -307,6 +321,20 @@
                             minlength="4"
                             maxlength="4"
                             required
+                        />
+                    </div>
+                    <div class="input mx-0 my-2">
+                        <label
+                            for="updateBookImage"
+                            class="font-bold text-sky-500 dark:text-slate-100"
+                        >
+                            Cover Buku
+                        </label>
+                        <img id="updateImagePreview" class="max-h-56 mb-2">
+                        <input
+                            id="updateBookImage"
+                            class="block w-full rounded-md border border-solid border-slate-700 p-2"
+                            type="file"
                         />
                     </div>
                     <div class="mx-0 my-3 flex items-center justify-between">

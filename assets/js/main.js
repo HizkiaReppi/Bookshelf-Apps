@@ -34,8 +34,8 @@ function generateId() {
     return +new Date();
 }
 
-function generateBookObject(id, title, author, year, isCompleted) {
-    return { id, title, author, year, isCompleted };
+function generateBookObject(id, title, author, year, isCompleted, imageUrl) {
+    return { id, title, author, year, isCompleted, imageUrl };
 }
 
 function findBook(bookId) {
@@ -62,31 +62,70 @@ function addBook() {
     const textAuthor = document.getElementById('inputBookAuthor').value;
     const textYear = document.getElementById('inputBookYear').value;
     const isCompleted = document.getElementById('inputBookIsComplete').checked;
+    const selectedImage = document.getElementById('inputBookImage').files[0];
+    let imageUrl = null
 
-    const generateID = generateId();
-    const bookObject = generateBookObject(
-        generateID,
-        textTitle,
-        textAuthor,
-        textYear,
-        isCompleted
-    );
+    if (selectedImage) {
+        const reader = new FileReader();
 
-    books.push(bookObject);
+        reader.onload = function (e) {
+            imageUrl = e.target.result;
 
-    document.dispatchEvent(new Event(RENDER_EVENT));
-    saveData();
+            const generateID = generateId();
+            const bookObject = generateBookObject(
+                generateID,
+                textTitle,
+                textAuthor,
+                textYear,
+                isCompleted,
+                imageUrl,
+            );
 
-    Swal.fire({
-        icon: 'success',
-        title: 'BERHASIL MENAMBAH BUKU!',
-        text: `BUKU ${textTitle} BERHASIL DITAMBAH!`,
-    });
+            books.push(bookObject);
 
-    document.querySelector('#inputSection').classList.remove('flex');
-    document.querySelector('#inputSection').classList.add('hidden');
+            document.dispatchEvent(new Event(RENDER_EVENT));
+            saveData();
 
-    getBooksInformation();
+            Swal.fire({
+                icon: 'success',
+                title: 'BERHASIL MENAMBAH BUKU!',
+                text: `BUKU ${textTitle} BERHASIL DITAMBAH!`,
+            });
+
+            document.querySelector('#inputSection').classList.remove('flex');
+            document.querySelector('#inputSection').classList.add('hidden');
+
+            getBooksInformation();
+        }
+
+        reader.readAsDataURL(selectedImage);
+    } else {
+        const generateID = generateId();
+        const bookObject = generateBookObject(
+            generateID,
+            textTitle,
+            textAuthor,
+            textYear,
+            isCompleted,
+            imageUrl,
+        );
+
+        books.push(bookObject);
+
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
+
+        Swal.fire({
+            icon: 'success',
+            title: 'BERHASIL MENAMBAH BUKU!',
+            text: `BUKU ${textTitle} BERHASIL DITAMBAH!`,
+        });
+
+        document.querySelector('#inputSection').classList.remove('flex');
+        document.querySelector('#inputSection').classList.add('hidden');
+
+        getBooksInformation();
+    }
 }
 
 function updateBook(bookId) {
@@ -97,25 +136,59 @@ function updateBook(bookId) {
     const updateAuthor = document.getElementById('updateBookAuthor').value;
     const updateYear = document.getElementById('updateBookYear').value;
     const isComplete = document.getElementById('updateBookIsComplete').checked;
+    const selectedImage = document.getElementById('updateBookImage').files[0];
 
-    bookTarget.title = updateTitle;
-    bookTarget.author = updateAuthor;
-    bookTarget.year = updateYear;
-    bookTarget.isCompleted = isComplete;
+    let imageUrl = null
 
-    document.dispatchEvent(new Event(RENDER_EVENT));
-    saveData();
+    if (selectedImage) {
+        const reader = new FileReader();
 
-    Swal.fire({
-        icon: 'success',
-        title: 'BERHASIL MENGUPDATE BUKU!',
-        text: `BUKU ${bookTarget.title} BERHASIL DIUPDATE!`,
-    });
+        reader.onload = function (e) {
+            imageUrl = e.target.result;
 
-    document.querySelector('#editSection').classList.remove('flex');
-    document.querySelector('#editSection').classList.add('hidden');
+            bookTarget.title = updateTitle;
+            bookTarget.author = updateAuthor;
+            bookTarget.year = updateYear;
+            bookTarget.isCompleted = isComplete;
+            bookTarget.imageUrl = imageUrl;
 
-    getBooksInformation();
+            document.dispatchEvent(new Event(RENDER_EVENT));
+            saveData();
+
+            Swal.fire({
+                icon: 'success',
+                title: 'BERHASIL MENGUPDATE BUKU!',
+                text: `BUKU ${bookTarget.title} BERHASIL DIUPDATE!`,
+            });
+
+            document.querySelector('#editSection').classList.remove('flex');
+            document.querySelector('#editSection').classList.add('hidden');
+
+            getBooksInformation();
+        }
+
+        reader.readAsDataURL(selectedImage);
+    } else {
+        bookTarget.title = updateTitle;
+        bookTarget.author = updateAuthor;
+        bookTarget.year = updateYear;
+        bookTarget.isCompleted = isComplete;
+        bookTarget.imageUrl = imageUrl;
+
+        document.dispatchEvent(new Event(RENDER_EVENT));
+        saveData();
+
+        Swal.fire({
+            icon: 'success',
+            title: 'BERHASIL MENGUPDATE BUKU!',
+            text: `BUKU ${bookTarget.title} BERHASIL DIUPDATE!`,
+        });
+
+        document.querySelector('#editSection').classList.remove('flex');
+        document.querySelector('#editSection').classList.add('hidden');
+
+        getBooksInformation();
+    }
 }
 
 function addBookToCompleted(bookId) {
@@ -246,6 +319,9 @@ function makeBook(bookObject) {
     textYear.classList.add('my-2', 'mx-0', 'sm:text-lg', 'text-base');
     textYear.innerText = `Tahun: ${bookObject.year}`;
 
+    const bookInfoContainer = document.createElement('div');
+    bookInfoContainer.append(textTitle, textAuthor, textYear);
+
     const article = document.createElement('article');
     article.classList.add(
         'p-4',
@@ -258,8 +334,17 @@ function makeBook(bookObject) {
         'rounded-md',
         'dark:border-slate-700'
     );
-    article.append(textTitle, textAuthor, textYear);
+
     article.setAttribute('id', `${bookObject.id}`);
+
+    const bookImage = document.createElement('img');
+    bookImage.src = bookObject.imageUrl;
+    bookImage.alt = `Cover Buku ${bookObject.title}`
+    bookImage.classList.add('my-4', 'max-h-28', 'object-contain');
+
+    const bookDataContainer = document.createElement('div');
+    bookDataContainer.classList.add('flex', 'items-center', 'gap-5');
+    bookDataContainer.append(bookImage, bookInfoContainer);
 
     const undoButton = document.createElement('button');
     undoButton.classList.add(
@@ -346,11 +431,13 @@ function makeBook(bookObject) {
         const textAuthor = document.getElementById('updateBookAuthor');
         const textYear = document.getElementById('updateBookYear');
         const isComplete = document.getElementById('updateBookIsComplete');
+        const updateImagePreview = document.getElementById('updateImagePreview');
 
         textTitle.value = bookItem.title;
         textAuthor.value = bookItem.author;
         textYear.value = bookItem.year;
         isComplete.checked = bookItem.isCompleted;
+        updateImagePreview.src = bookItem.imageUrl;
 
         updateForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -395,7 +482,7 @@ function makeBook(bookObject) {
     buttonContainer.classList.add('flex', 'gap-2');
     buttonContainer.append(undoButton, updateButton, trashButton);
 
-    article.append(buttonContainer);
+    article.append(bookDataContainer, buttonContainer);
 
     return article;
 }
@@ -470,6 +557,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchSubmit = document.getElementById('searchBook');
     const spanSubmitForm = document.querySelector('#inputBook span');
     const completeCheckbox = document.getElementById('inputBookIsComplete');
+    const inputImage = document.getElementById('inputBookImage');
+    const imagePreview = document.getElementById('imagePreview');
+    const updateImage = document.getElementById('updateBookImage');
+    const updateImagePreview = document.getElementById('updateImagePreview');
 
     submitForm.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -480,6 +571,8 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('inputBookAuthor').value = '';
         document.getElementById('inputBookYear').value = '';
         document.getElementById('inputBookIsComplete').checked = false;
+        imagePreview.src = '';
+        inputImage.value = '';
     });
 
     searchSubmit.addEventListener('keyup', function (e) {
@@ -494,6 +587,34 @@ document.addEventListener('DOMContentLoaded', function () {
             spanSubmitForm.innerText = 'Selesai Dibaca';
         } else {
             spanSubmitForm.innerText = 'Belum Selesai Dibaca';
+        }
+    });
+
+    inputImage.addEventListener('change', () => {
+        const selectedImage = inputImage.files[0];
+
+        if (selectedImage) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                imagePreview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(selectedImage);
+        }
+    });
+
+    updateImage.addEventListener('change', () => {
+        const selectedImage = updateImage.files[0];
+
+        if (selectedImage) {
+            const reader = new FileReader();
+
+            reader.onload = (e) => {
+                updateImagePreview.src = e.target.result;
+            }
+
+            reader.readAsDataURL(selectedImage);
         }
     });
 
